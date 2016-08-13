@@ -4,32 +4,46 @@ function createNewChatMessage(message) {
 	// the entire message.
 
 	const messageDate = document.createTextNode(message.date),
+				messageDateSmall = document.createElement('small'),
 				messageDateDiv = document.createElement('div');
-				messageDateDiv.classList.add('date');
-				messageDateDiv.appendChild(messageDate);
+
+	messageDateSmall.appendChild(messageDate);
+	messageDateDiv.appendChild(messageDateSmall);
+	messageDateDiv.classList.add('date');
 
 	const messageContent = document.createTextNode(message.content),
+				messageContentP = document.createElement('p'),
 				messageContentDiv = document.createElement('div');
-				messageContentDiv.classList.add('content');
-				messageContentDiv.appendChild(messageContent);
+
+	messageContentP.appendChild(messageContent);
+	messageContentDiv.appendChilld(messageContentP);
+	messageContentDiv.classList.add('content');
+
 
 	const messageAuthor = document.createTextNode(message.author),
+				messageAuthorP = document.createElement('p'),
 				messageAuthorDiv = document.createElement('div');
-				messageAuthorDiv.classList.add('author');
-				messageAuthorDiv.appendChild(messageAuthor);
+
+	messageAuthorP.appendChild(messageAuthor);
+	messageAuthorDiv.appendChild(messageAuthorP);
+	messageAuthorDiv.classList.add('author');
+
 
 	const messageAuthorImage = document.createElement('img'),
 				messageAuthorImageDiv = document.createElement('div');
-				messageAuthorImage.setAttribute('src', message.authorImage);
-				messageAuthorImageDiv.classList.add('author-image');
-				messageAuthorImageDiv.appendChild(messageAuthorImage);
+
+	messageAuthorImage.setAttribute('src', message.authorImage);
+	messageAuthorImageDiv.appendChild(messageAuthorImage);
+	messageAuthorImageDiv.classList.add('author-image');
 
 	const messageDiv = document.createElement('div');
-				messageDiv.classList.add('message');
-				messageDiv.appendChild(messageAuthorImageDiv);
-				messageDiv.appendChild(messageAuthorDiv);
-				messageDiv.appendChild(messageContentDiv);
-				messageDiv.appendChild(messageDateDiv);
+	
+	messageDiv.appendChild(messageAuthorImageDiv);
+	messageDiv.appendChild(messageAuthorDiv);
+	messageDiv.appendChild(messageContentDiv);
+	messageDiv.appendChild(messageDateDiv);
+	messageDiv.classList.add('message');
+
 
 	// TODO: Grab this div within a closure.
 	document.getElementById('chat-room').appendChild(messageDiv);
