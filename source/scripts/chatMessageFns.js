@@ -1,7 +1,15 @@
+document.getElementById('add-message').addEventListener('click', addMessage);
+
+function addMessage( ) {
+	createNewChatMessage({
+		date: '12/20/1993',
+		content: 'Hey there! Hiiii!',
+		author: 'Tim Jones',
+		authorImage: 'http://bit.ly/2b53L1B'
+	})
+}
+
 function createNewChatMessage(message) {
-	// Messages have a date, content, author, and author image,
-	// each contained within a div with a main div encompassing
-	// the entire message.
 
 	const messageDate = document.createTextNode(message.date),
 				messageDateSmall = document.createElement('small'),
@@ -16,7 +24,7 @@ function createNewChatMessage(message) {
 				messageContentDiv = document.createElement('div');
 
 	messageContentP.appendChild(messageContent);
-	messageContentDiv.appendChilld(messageContentP);
+	messageContentDiv.appendChild(messageContentP);
 	messageContentDiv.classList.add('content');
 
 
@@ -28,6 +36,12 @@ function createNewChatMessage(message) {
 	messageAuthorDiv.appendChild(messageAuthorP);
 	messageAuthorDiv.classList.add('author');
 
+	const messageColumn = document.createElement('div');
+
+	messageColumn.appendChild(messageAuthorDiv);
+	messageColumn.appendChild(messageContentDiv);
+	messageColumn.appendChild(messageDateDiv);
+	messageColumn.classList.add('message-column');
 
 	const messageAuthorImage = document.createElement('img'),
 				messageAuthorImageDiv = document.createElement('div');
@@ -39,12 +53,15 @@ function createNewChatMessage(message) {
 	const messageDiv = document.createElement('div');
 
 	messageDiv.appendChild(messageAuthorImageDiv);
-	messageDiv.appendChild(messageAuthorDiv);
-	messageDiv.appendChild(messageContentDiv);
-	messageDiv.appendChild(messageDateDiv);
+	messageDiv.appendChild(messageColumn);
 	messageDiv.classList.add('message');
 
+	messageDiv.addEventListener('click', handleMessageClick);
 
 	// TODO: Grab this div within a closure.
 	document.getElementById('chat-room').appendChild(messageDiv);
+}
+
+function handleMessageClick( ) {
+	alert(this.innerHTML);
 }

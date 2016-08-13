@@ -1,0 +1,31 @@
+#chat-room {
+  width: 90%;
+  max-width: 768px;
+  display: flex;
+  flex-direction: column; }
+  #chat-room .message {
+    background: grey;
+    width: 100%;
+    display: flex;
+    margin-bottom: 15px; }
+    #chat-room .message .author-image {
+      background: black;
+      display: flex;
+      align-items: center; }
+      #chat-room .message .author-image img {
+        max-width: 55px; }
+    #chat-room .message .message-column {
+      display: flex;
+      flex-direction: column; }
+      #chat-room .message .message-column .author p {
+        font-weight: 700;
+        font-size: 2.4rem; }
+      #chat-room .message .message-column .content p {
+        font-weight: 400;
+        font-size: 1.6rem; }
+      #chat-room .message .message-column .date small {
+        font-weight: 300;
+        font-size: 1.4rem; }
+
+button#add-message {
+  background: #f2f2f2; }
